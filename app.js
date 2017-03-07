@@ -1,14 +1,15 @@
 var TwitterPackage = require('twitter');
+require('dotenv').config();
 
 var secret = {
-  consumer_key: 'OT87ByHdhxW97OminjhcZmcS2',
-  consumer_secret: 'HEfDcpxVmiMJCWdKq6tOOV3UUNs8kqzHRAMFkakq3u8UlnMqcL',
-  access_token_key: '838769041242218497-opFtS99PkMa64vHdPhY8Bk8AZugucxU',
-  access_token_secret: '3V8EL9wLmFPpvqwtbVVXVPRiYRTyvDLc4chYcUlQsdwB9'
+  consumer_key: process.env.CONSUMER_KEY,
+  consumer_secret: process.env.CONSUMER_SECRET,
+  access_token_key: process.env.ACCESS_TOKEN_KEY,
+  access_token_secret: process.env.ACCESS_TOKEN_SECRET
 }
 var Twitter = new TwitterPackage(secret);
 
-Twitter.post('statuses/update', {status: 'C\'est le début de la fin !'},  function(error, tweet, response){
+Twitter.post('statuses/update', {status: "il est " + new Date()},  function(error, tweet, response){
   if(error){
     console.log(error);
   }

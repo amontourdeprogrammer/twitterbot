@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/amontourdeprogrammer/twitterbot/issues"
   },
-  "homepage": "https://github.com/amontourdeprogrammer/twitterbot#readme"
+  "homepage": "https://github.com/amontourdeprogrammer/twitterbot#readme",
+  "dependencies": {
+    "dotenv": "^4.0.0",
+    "request": "^2.80.0",
+    "twitter": "^1.7.0"
+  }
 }

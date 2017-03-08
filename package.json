@@ -1,0 +1,19 @@
+{
+  "name": "twitterbot",
+  "version": "1.0.0",
+  "description": "twitter bot qui envoie des tweets pour prévenir de la clôture des expositions parisiennes",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amontourdeprogrammer/twitterbot.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/amontourdeprogrammer/twitterbot/issues"
+  },
+  "homepage": "https://github.com/amontourdeprogrammer/twitterbot#readme"
+}

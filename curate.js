@@ -1,16 +1,25 @@
 var request = require('request');
+var exhibition = {
+    "title": "",
+    "url": "",
+    "desc": "" 
+  };
 
-request(
+exports.exhibition = exhibition;
+
+exports.get_exhibition = function(callback) { request(
     { url: 'https://api.paris.fr/api/data/2.2/QueFaire/get_events/?token=4f3ff60a873f39938f7f00c43dad49e9e94a83a044f539de962299bbc09630d2&categories=exposition&tags=&start=&end=0&offset=&limit=' },
     function (error, response, body) {
       if (!error && response.statusCode === 200) {
         select_exhibition_to_tweet(body);
+        callback(null, exhibition);
       } else {
-        console.log('error:', error);
+        console.log('error while calling Paris.fr API', error);
         console.log('statusCode:', response && response.statusCode);
       }
     }
     );
+}
 
 function select_exhibition_to_tweet(body) {
   var exhibitions = JSON.parse(body).data;
@@ -22,6 +31,7 @@ function select_exhibition_to_tweet(body) {
   //console.log('test_first_exhibition_closing', close_before(exhibitions[0], deadline_by(150)));
   //console.log('test_exhibitions_closing_in_21_days', exhibitions_ending_soon(exhibitions, deadline_by(21)));
   //console.log('exhibition to tweet', exhibition_to_tweet);
+  exhibition = exhibition_summary(exhibition_to_tweet);
   console.log('chosen exhibition tweet content', exhibition_summary(exhibition_to_tweet));
 }
 

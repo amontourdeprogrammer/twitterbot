@@ -1,18 +1,12 @@
-var TwitterPackage = require('twitter');
-require('dotenv').config();
+var publish = require('./publish');
+var curate = require('./curate');
 
-var secret = {
-  consumer_key: process.env.CONSUMER_KEY,
-  consumer_secret: process.env.CONSUMER_SECRET,
-  access_token_key: process.env.ACCESS_TOKEN_KEY,
-  access_token_secret: process.env.ACCESS_TOKEN_SECRET
-}
-var Twitter = new TwitterPackage(secret);
+var exhibition = curate.exhibition;
 
-Twitter.post('statuses/update', {status: "il est " + new Date()},  function(error, tweet, response){
-  if(error){
-    console.log(error);
-  }
-  console.log(tweet);  // Tweet body.
-  console.log(response);  // Raw response object.
+curate.get_exhibition(function(err, exhibition) {
+  if (err)
+    console.log('error while selecting exhibition:',err);
+  console.log(exhibition);
+  publish.tweet(exhibition);
 });
+
